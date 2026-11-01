@@ -511,6 +511,11 @@ namespace FieldCommand
             while (UnitRegistry.customIDLookup.ContainsKey(name));
 
             bool hold = !PendingForFaction && Plugin.SpawnHoldingPosition.Value;
+            if (hold && Plugin.SupplyTrucksAutonomous.Value && Resupply.IsSupplyTruck(entry.Definition.unitPrefab))
+            {
+                // the game's supply-truck AI only starts when the truck is not holding position
+                hold = false;
+            }
             Unit unit;
             if (entry.Playable)
             {

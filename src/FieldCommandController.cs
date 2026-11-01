@@ -87,6 +87,7 @@ namespace FieldCommand
                     purchased.Clear();
                     factionBought.Clear();
                     KillReward.Reset();
+                    Resupply.Reset();
                     paid.Clear();
                     Stratagems.ResetCooldowns();
                     attackOrders.Clear();
@@ -100,6 +101,7 @@ namespace FieldCommand
             foreach (var u in purchased) KillReward.Remember(u, false);
             foreach (var u in factionBought) KillReward.Remember(u, true);
             KillReward.Tick();
+            Resupply.Tick(purchased, factionBought);
 
             if (Plugin.LeaveKey.Value.IsDown() && crew != null && mode == PlaceMode.None)
             {

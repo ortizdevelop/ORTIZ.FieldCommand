@@ -22,7 +22,7 @@ namespace FieldCommand
     {
         public const string Guid = "ortiz.fieldcommand";
         public const string OldGuid = "com.nikita.fieldcommand";
-        public const string Version = "0.10.1";
+        public const string Version = "0.10.2";
         public const int MaxUnitLimit = 150;
 
         internal static ManualLogSource Log;
@@ -76,6 +76,9 @@ namespace FieldCommand
         internal static ConfigEntry<float> GroundAttackStandoff;
         internal static ConfigEntry<float> NavalAttackStandoff;
         internal static ConfigEntry<float> RotateStep;
+        internal static ConfigEntry<bool> EnableResupply;
+        internal static ConfigEntry<float> ResupplyRadius;
+        internal static ConfigEntry<bool> SupplyTrucksAutonomous;
 
         private void Awake()
         {
@@ -217,6 +220,14 @@ namespace FieldCommand
                 "How far from the target ships stop when ordered to attack", "На каком расстоянии от цели останавливаются корабли при приказе «Атаковать»");
             RotateStep = L.Bind(Config, sBeh, rBeh, "Rotation step, deg", "Шаг поворота, град", 45f,
                 "How many degrees the rotate key turns the unit", "На сколько градусов поворачивать юнит клавишей поворота");
+            EnableResupply = L.Bind(Config, sBeh, rBeh, "Resupply from nearby ammo sources", "Пополнение боезапаса от ближайших источников", true,
+                "Stopped friendly units that are short of ammo are rearmed by the nearest friendly ammo container, depot or supply truck within the radius below",
+                "Стоящие союзные юниты, у которых не хватает боезапаса, пополняются от ближайшего союзного контейнера с боеприпасами, склада или машины снабжения в радиусе ниже");
+            ResupplyRadius = L.Bind(Config, sBeh, rBeh, "Resupply radius, m", "Радиус пополнения, м", 150f,
+                "How close a unit must be to an ammo source to be rearmed", "Насколько близко юнит должен стоять к источнику боеприпасов");
+            SupplyTrucksAutonomous = L.Bind(Config, sBeh, rBeh, "Supply trucks work on their own", "Машины снабжения работают сами", true,
+                "Purchased supply trucks ignore hold position and drive to friendly units that need ammo, like in the base game",
+                "Купленные машины снабжения не держат позицию, а сами ездят к союзникам, которым нужны боеприпасы, как в обычной игре");
         }
 
         /// <summary>Settings of the old "com.nikita.fieldcommand" build are carried over once.</summary>
