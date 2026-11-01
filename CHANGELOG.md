@@ -1,4 +1,9 @@
 # Changelog
+## 0.10.3
+- Fixed: resupply stopped working as soon as an *Ammo box* (or another container without an access point) was on the map — every check failed with an error. Such containers now work as ammo sources too.
+- Fixed: playable KAR / BOTE-type vehicles bought with the mod (they are aircraft-based internally) were never rearmed. They are now rearmed when standing still near an ammo source.
+- Units whose weapon stations the game's own rearm routine can't handle are refilled directly.
+- Diagnostics in `BepInEx/LogOutput.log`: a resupply summary once a minute, and the list of units hidden from the purchase menu (other faction's equipment / mission event content) with the reason.
 ## 0.10.2
 - Fixed: units did not rearm from purchased ammo containers, depots and supply trucks and just stood still with empty magazines. Now any stopped friendly vehicle or ship that is short of ammo is rearmed by the nearest friendly ammo source within **150 m** (configurable), using the game's own rearm rules.
 - Fixed: supply trucks bought *for me* spawned in hold position, which switched off the game's supply AI. They now drive to friendly units that need ammo on their own, like in the base game.
