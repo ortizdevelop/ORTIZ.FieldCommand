@@ -1,4 +1,8 @@
 # Changelog
+## 0.10.2
+- Fixed: units did not rearm from purchased ammo containers, depots and supply trucks and just stood still with empty magazines. Now any stopped friendly vehicle or ship that is short of ammo is rearmed by the nearest friendly ammo source within **150 m** (configurable), using the game's own rearm rules.
+- Fixed: supply trucks bought *for me* spawned in hold position, which switched off the game's supply AI. They now drive to friendly units that need ammo on their own, like in the base game.
+- New settings in *4. Behaviour*: *Resupply from nearby ammo sources*, *Resupply radius, m*, *Supply trucks work on their own*.
 ## 0.10.1
 - Fixed: in 0.10.0 the mod stopped loading after the language setting (the F6 menu did nothing and F1 showed only the language). Two setting names contained an apostrophe, which BepInEx does not allow. All your settings are kept.
 ## 0.10.0

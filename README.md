@@ -43,7 +43,7 @@ Spend your money on **ground units, warships, static air defence and supply depo
 | 👤 **For yourself or for the faction** | *For me*: units hold position and wait for your orders. *For faction*: the AI decides where they go. Separate limits (60 each by default, up to 150) — set them with sliders right in the purchase menu. |
 | 🎯 **RTS orders on the map** | Move, waypoints, hold, focus fire from current position, advance to firing range, automatic missile defence, scrap with refund. |
 | 🚙 **Playable KAR / BOTE units** | Pick modules for every hardpoint, buy and spawn right inside. Get out — the vehicle stays; get back in from the menu. |
-| 🏗️ **Defences and supplies** | SAM sites, gun positions, radars, depots, ammo / fuel / repair containers. Supplies don't use unit slots. |
+| 🏗️ **Defences and supplies** | SAM sites, gun positions, radars, depots, ammo / fuel / repair containers. Supplies don't use unit slots. Stopped units near a friendly ammo container, depot or supply truck are **rearmed automatically**; bought supply trucks drive to units that need ammo on their own. |
 | ☢️ **Stratagems** | Artillery, carpet bombing, missile strike, tactical and strategic nuke, airdrop. Point or area targeting with adjustable radius. |
 | 💰 **Kill rewards** | Get a share of the reward when your units (default 50 %) or stratagems (default 15 %) destroy enemies or missiles. |
 
@@ -124,6 +124,8 @@ Open **F1 → ORTIZ Ops - FieldCommand**. The most useful options:
 | Territory | Radius from own units / min. distance to enemy | 3 km / 2 km |
 | Territory | Min. water depth for ships | 8 m |
 | Behaviour | Spawn in *hold position* | on |
+| Behaviour | Resupply from nearby ammo sources / resupply radius | on / 150 m |
+| Behaviour | Supply trucks work on their own (ignore hold position) | on |
 | Behaviour | Attack standoff: ground / naval | 1.5 km / 9 km |
 | Factions | Only own faction's equipment / show other faction (greyed out) | on / off |
 | Factions | Manual overrides (`key:BDF, key:PALA, key:ALL`) | — |
@@ -174,7 +176,7 @@ Game and BepInEx assemblies are referenced from your local installation and are 
 - 👤 **Себе или фракции** — «себе»: стоят на месте и ждут приказов; «фракции»: ими управляет ИИ. Отдельные лимиты (по 60, максимум 150) — меняются ползунками прямо в меню покупки.
 - 🎯 **Приказы на карте** — движение, маршрут, держать позицию, огонь с места, выдвижение на дистанцию огня, перехват ракет, списание с возвратом денег.
 - 🚙 **Играбельная техника KAR / BOTE** — выбор модулей на каждую точку подвеса, сразу садишься внутрь, можно выйти и сесть снова.
-- 🏗️ **Оборона и снабжение** — ЗРК, огневые точки, радары, склады, контейнеры с боеприпасами/топливом/ремонтом. Снабжение не занимает слоты юнитов.
+- 🏗️ **Оборона и снабжение** — ЗРК, огневые точки, радары, склады, контейнеры с боеприпасами/топливом/ремонтом. Снабжение не занимает слоты юнитов. Стоящие юниты рядом с союзным контейнером боеприпасов, складом или машиной снабжения **пополняют боезапас автоматически**; купленные машины снабжения сами ездят к тем, кому нужны патроны.
 - ☢️ **Стратегемы** — артудар, ковровая бомбардировка, ракетный удар, тактический и стратегический ядерный удар, десант. По точке или по области с регулируемым радиусом.
 - 💰 **Награды** — доля награды за уничтожения твоими юнитами (50 %) и стратегемами (15 %).
 
