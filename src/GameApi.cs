@@ -109,6 +109,7 @@ namespace FieldCommand
         {
             var result = new List<CatalogEntry>();
             var seen = new HashSet<UnitDefinition>();
+            var eventHidden = new List<string>();
             IEnumerable<UnitDefinition> defs = Encyclopedia.Lookup.Values;
             try
             {
@@ -175,6 +176,7 @@ namespace FieldCommand
                 }
                 if (!allowed)
                 {
+                    eventHidden.Add(string.IsNullOrEmpty(def.unitName) ? def.name : def.unitName);
                     continue;
                 }
                 string name = string.IsNullOrEmpty(def.unitName) ? def.name : def.unitName;
@@ -193,6 +195,10 @@ namespace FieldCommand
                 });
             }
 
+            if (eventHidden.Count > 0)
+            {
+                Plugin.Log.LogInfo($"Hidden by the mission's event-content setting ({eventHidden.Count}): " + string.Join("; ", eventHidden));
+            }
             ApplyFactions(result);
 
             result.Sort((a, b) =>
@@ -236,7 +242,16 @@ namespace FieldCommand
             {
                 Plugin.Log.LogInfo(log.ToString());
             }
+            var hidden = entries.Where(e => !e.AllowedForMe).Select(e => e.Name + " [" + FactionResolver.KeyOf(e.Definition) + ", " + e.FactionTag + "]").ToList();
+            string hiddenText = string.Join("; ", hidden);
+            if (hiddenText != lastHiddenLog)
+            {
+                lastHiddenLog = hiddenText;
+                Plugin.Log.LogInfo($"Hidden as other faction's equipment ({hidden.Count}): " + (hidden.Count == 0 ? "none" : hiddenText));
+            }
         }
+
+        private static string lastHiddenLog;
 
         private static string RoleTag(UnitDefinition def)
         {

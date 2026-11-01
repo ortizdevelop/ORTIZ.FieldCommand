@@ -22,7 +22,7 @@ namespace FieldCommand
     {
         public const string Guid = "ortiz.fieldcommand";
         public const string OldGuid = "com.nikita.fieldcommand";
-        public const string Version = "0.10.2";
+        public const string Version = "0.10.3";
         public const int MaxUnitLimit = 150;
 
         internal static ManualLogSource Log;
